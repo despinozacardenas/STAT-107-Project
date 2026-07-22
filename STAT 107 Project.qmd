@@ -1,0 +1,23 @@
+---
+title: "STAT 107 Project"
+author: "Danny Espinoza Cardenas"
+format: html
+editor: visual
+---
+
+## Project Setup
+
+```{r}
+# Load Data
+# Load Packages
+```
+
+## Introduction
+
+## Methods
+
+## Results
+
+## Discussion
+
+## Appendix
