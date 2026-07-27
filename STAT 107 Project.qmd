@@ -2,19 +2,37 @@
 title: "STAT 107 Project"
 author: "Danny Espinoza Cardenas"
 format: html
+execute:
+  echo: false
+  warning: false
+  message: false
 editor: visual
 ---
 
 ## Project Setup
 
 ```{r}
-# Load Data
-# Load Packages
+source("Project_Setup.R")
 ```
 
 ## Introduction
 
+This dataset contains 21 body dimension measurements as well as age, weight, height, and gender on 507 individuals. The 247 men and 260 women were primarily individuals in their twenties and thirties, with a scattering of older men and women, all exercising several hours a week. The original dataset contains skeletal and muscular girth measurements. For this project I will be analyzing the below muscular girth measurements as well as age, weight, height, and gender. I am omitting the skeletal data because I am unable to measure my own bone structure for the purpose of my research question.
+
+My research question is figuring out the statistics of where my personal muscular girth measurements would place me within a 10 year range. Comparing myself to these physically active individuals, I should be on the low tail of the data since I do no workout often. I do partake in latin dancing at least an hour or two every week and I walk my dog a minimum of 30 minutes a day, but that is probably far different than active lifestyle of individuals in the original data. That is, where does a 26-year-old lightly active male place relatively to highly active young adults of age 21 - 31? I also seek to see whether navel girth or waist girth reliably predict total body weight? This question is to determine if the stomach or the smallest part of the waist is actually better to determine total body weight. Often times the stomach can be bloated or expanded due to breathing, so I theorize that the waist will be better.
+
+```{r}
+body_dimensions_dictionary %>%
+  kable(caption = "Data Dictionary for Body Dimensions Measurement Analysis")
+```
+
 ## Methods
+
+First I will look at where I land compared to three groups, Group A: 21 - 31 year old males, Group B: 21 - 31 year old females, Group C: 21 - 31 year old females and males. This will be done by comparing my position across the 3 distributions and determine my standing through z-score and percentile rankings.
+
+Next, I will check for normality before conducting my statistical inference of whether I can reject or fail to reject the hypothesis of my values being statistically lower than the average of Group A, which is the most relevant subgroup. That is, the null hypothesis is that the scores across my data is the same with the average of Group A. The alternative hypothesis is that my data is less than the average of the data from Group A.
+
+Finally, I will check whether navel or waist girth accounts for more variance in the total body weight. I will pick the optimal one of the two and conduct a linear regression model, while checking for linearity and constant variance.
 
 ## Results
 
