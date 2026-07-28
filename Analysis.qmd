@@ -1,0 +1,50 @@
+---
+title: "STAT 107 Project"
+author: "Danny Espinoza Cardenas"
+format: html
+execute:
+  echo: false
+  warning: false
+  message: false
+editor: visual
+---
+
+## Introduction
+
+This dataset contains 21 body dimension measurements as well as age, weight, height, and gender on 507 individuals. The 247 men and 260 women were primarily individuals in their twenties and thirties, with a scattering of older men and women, all exercising several hours a week. The original dataset contains skeletal and muscular girth measurements. For this project I will be analyzing the below muscular girth measurements as well as age, weight, height, and gender. I am omitting the skeletal data because I am unable to measure my own bone structure for the purpose of my research question.
+
+My research question is figuring out the statistics of where my personal muscular girth measurements would place me within a 10 year range. Comparing myself to these physically active individuals, I should be on the low tail of the data since I do no workout often. I do partake in latin dancing at least an hour or two every week and I walk my dog a minimum of 30 minutes a day, but that is probably far different than active lifestyle of individuals in the original data. That is, where does a 26-year-old lightly active male place relatively to highly active young adults of age 21 - 31 in terms of weight? I also seek to discover if my weight follows the same trend when accounting for all muscular girth measurements.
+
+```{r}
+source("Data_Dictionary.R")
+```
+
+## Methods
+
+First I will look at where I land compared to three groups, Group A: 21 - 31 year old males, Group B: 21 - 31 year old females, Group C: 21 - 31 year old females and males. This will be done by comparing my position across the 3 distributions and determine my standing through z-score and percentile rankings with Group A. For Group B and C, I will be producing a table comparing the averages as they are not my main focus group for comparison.
+
+First, I created a table using bind_rows() and summarise() to calculate the averages across all the columns, except gender. That table exists for simple comparison between all the three groups.
+
+I then used hist() in a for loop to graph small histograms with a red abline() showcasing where my measurements land according to the distribution of each category compared to Group A.
+
+```{r}
+source("EDA_Setup.R")
+```
+
+Next, I will check for normality before conducting my statistical inference of whether I can reject or fail to reject the hypothesis of my values being statistically lower than the average of Group A, which is the most relevant subgroup. Although visually I appear to be below the mean in most categories, I am choosing weight as an overall variable to determine if that is statistically true. This is done through a one sided t-test with hypothesis: $H_0: \mu_{\text{weight}} = 58.35$ $H_A: \mu_{\text{weight}} > 58.35$
+
+Finally, I will check all categories through a multivariate linear regression model to analyze if all the muscular girths to predict weight can determine if my weight truly is truly different than the trend of active individuals.
+
+## Results
+
+```{r}
+source("T-Test.R")
+```
+
+A p-value \< 2.2e-16 at $\alpha = 0.05$ determines that we can reject the null hypothesis. That is, the mean weight of Group A is not 58.35 kg, but rather much higher around `r round(mean(group_males$weight, na.rm = TRUE), 2)` kg.
+
+So I am statistically far below the mean—specifically, `r round(my_z_score, 3)` standard deviations away from the mean weight of active males between ages 21–31. This places me in the bottom `r round(pnorm(my_z_score) * 100, 2)`% compared to this baseline group.
+
+## Discussion
+
+## Appendix

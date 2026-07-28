@@ -49,3 +49,8 @@ body_dimensions_dictionary <- tibble(
   Units = c(rep("cm", 12), "years", "kg", "cm", "Factor"),
   R_Type = c(rep("double", 15), "factor")
 )
+
+body_dimensions_dictionary <- body_dimensions_dictionary %>%
+  kable(caption = "Data Dictionary for Body Dimensions Measurement Analysis")
+
+print(body_dimensions_dictionary)
