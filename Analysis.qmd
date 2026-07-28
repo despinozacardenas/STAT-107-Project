@@ -43,8 +43,20 @@ source("T-Test.R")
 
 A p-value \< 2.2e-16 at $\alpha = 0.05$ determines that we can reject the null hypothesis. That is, the mean weight of Group A is not 58.35 kg, but rather much higher around `r round(mean(group_males$weight, na.rm = TRUE), 2)` kg.
 
-So I am statistically far below the mean—specifically, `r round(my_z_score, 3)` standard deviations away from the mean weight of active males between ages 21–31. This places me in the bottom `r round(pnorm(my_z_score) * 100, 2)`% compared to this baseline group.
+So I am statistically far below the mean—specifically, `r round(my_z_score, 3)` standard deviations away from the mean weight of active males between ages 21–31. This places me in the bottom `r round(pnorm(my_z_score) * 100, 2)`% compared to the active males of Group A.
+
+```{r}
+source("Multivariate_Regression.R")
+```
+
+There is `r round(summary(multivariate_model)$adj.r.squared, 3)` variability accounted for by the 12 girth measurements, so this model should be a good prediction model for the weight of active males.
+
+Looking at my blue data point, I follow the trendline and so although I was statistically below the average for weight, when I account for all variables I am actually inline with the group of active individuals.
+
+Looking at the residual plot, my predicted weight should lie on the red trendline, but I am slightly below which means \*\*my actual weight of `r my_row$weight` kg is less than the model's prediction of `r round(my_predicted_weight, 2)` kg . This results in a negative residual of `r round(my_residual, 2)`. This could suggest that relative to the active males, I have a lower mass density, either muscle or the unmeasured bone / skeletal density, than an average active male with my specific frame size and muscular girths.
 
 ## Discussion
+
+Overall, I found that while I was below the mean in all stats of muscular girth, I am actually not too different when comparing my weight compared to my overall girth measurements. Although I am slightly below, my results show that with a bit of exercise I have the ability to reach those same girths. The skeletal density due to having a smaller frame is an interesting component that I would love to get professionally measured. Which leads me to the one thing that I would do differently is get my measurements done professionally rather than using a simple tape measure and weight scale. My results are very interesting because I had always considered myself to be "skinny fat" but statistically showing that i am actually not too far off from what is deemed average is fascinating.
 
 ## Appendix

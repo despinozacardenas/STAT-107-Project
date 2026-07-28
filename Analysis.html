@@ -176,20 +176,67 @@ alternative hypothesis: true mean is greater than 58.35
  75.84416      Inf
 sample estimates:
 mean of x 
- 77.37226 
-
-A p-Value &lt; 2.2e-16 at α = 0.05 determines that we can reject the null hypothesis.
-   That is, the mean weight of group A is not at 58.35, but rather much higher around 77.37.
-   So I am statistically far below the mean. I am actually -1.761 standard deviations
-   away from the mean weight of active males between 21-31!
-   Which places me in the bottom 3.91 % when compared to the active males.</code></pre>
+ 77.37226 </code></pre>
 </div>
 </div>
 <p>A p-value &lt; 2.2e-16 at <span class="math inline">\(\alpha = 0.05\)</span> determines that we can reject the null hypothesis. That is, the mean weight of Group A is not 58.35 kg, but rather much higher around 77.37 kg.</p>
-<p>So I am statistically far below the mean—specifically, -1.761 standard deviations away from the mean weight of active males between ages 21–31. This places me in the bottom 3.91% compared to this baseline group.</p>
+<p>So I am statistically far below the mean—specifically, -1.761 standard deviations away from the mean weight of active males between ages 21–31. This places me in the bottom 3.91% compared to the active males of Group A.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = weight ~ shoulder_girth + chest_girth + waist_girth + 
+    navel_girth + hip_girth + thigh_girth + bicep_girth + forearm_girth + 
+    knee_girth + calf_girth + ankle_girth + wrist_girth, data = group_males)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-8.5818 -2.0979  0.3631  2.0472  8.9849 
+
+Coefficients:
+                 Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)    -102.97328    6.44599 -15.975  &lt; 2e-16 ***
+shoulder_girth    0.25300    0.08038   3.147 0.002063 ** 
+chest_girth       0.12701    0.08819   1.440 0.152345    
+waist_girth       0.38537    0.09488   4.062 8.58e-05 ***
+navel_girth       0.07443    0.08212   0.906 0.366502    
+hip_girth         0.41265    0.12130   3.402 0.000901 ***
+thigh_girth       0.20880    0.15852   1.317 0.190215    
+bicep_girth      -0.07772    0.22919  -0.339 0.735104    
+forearm_girth     0.40980    0.39762   1.031 0.304719    
+knee_girth        0.58986    0.21353   2.762 0.006613 ** 
+calf_girth        0.12551    0.18927   0.663 0.508455    
+ankle_girth      -0.05395    0.24946  -0.216 0.829122    
+wrist_girth       0.83804    0.56421   1.485 0.139996    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 3.205 on 124 degrees of freedom
+Multiple R-squared:  0.9197,    Adjusted R-squared:  0.912 
+F-statistic: 118.4 on 12 and 124 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Analysis_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Analysis_files/figure-html/unnamed-chunk-4-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>There is 0.912 variability accounted for by the 12 girth measurements, so this model should be a good prediction model for the weight of active males.</p>
+<p>Looking at my blue data point, I follow the trendline and so although I was statistically below the average for weight, when I account for all variables I am actually inline with the group of active individuals.</p>
+<p>Looking at the residual plot, my predicted weight should lie on the red trendline, but I am slightly below which means **my actual weight of 58.35 kg is less than the model’s prediction of 58.46 kg . This results in a negative residual of -0.11. This could suggest that relative to the active males, I have a lower mass density, either muscle or the unmeasured bone / skeletal density, than an average active male with my specific frame size and muscular girths.</p>
 </section>
 <section id="discussion" class="level2">
 <h2 class="anchored" data-anchor-id="discussion">Discussion</h2>
+<p>Overall, I found that while I was below the mean in all stats of muscular girth, I am actually not too different when comparing my weight compared to my overall girth measurements. Although I am slightly below, my results show that with a bit of exercise I have the ability to reach those same girths. The skeletal density due to having a smaller frame is an interesting component that I would love to get professionally measured. Which leads me to the one thing that I would do differently is get my measurements done professionally rather than using a simple tape measure and weight scale. My results are very interesting because I had always considered myself to be “skinny fat” but statistically showing that i am actually not too far off from what is deemed average is fascinating.</p>
 </section>
 <section id="appendix" class="level2">
 <h2 class="anchored" data-anchor-id="appendix">Appendix</h2>
